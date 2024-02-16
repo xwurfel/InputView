@@ -4,13 +4,17 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.os.Bundle
+import android.os.Parcelable
 import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
 import android.text.InputType
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
+import android.util.SparseArray
 import android.util.TypedValue
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -22,6 +26,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.children
 import androidx.core.widget.doOnTextChanged
 import configurable.input.fields.R
 import configurable.input.fields.presentation.custom.extensions.dp
@@ -331,7 +336,6 @@ class InputField @JvmOverloads constructor(
                     ?: DEFAULT_DRAWABLE_PADDING.dp
         }
 
-
         getStringAttribute(attributesArray, R.styleable.InputField_text)?.let {
             editText.setText(it)
         }
@@ -491,6 +495,44 @@ class InputField @JvmOverloads constructor(
             }
         }
 
+    /**
+     * Custom SaveInstance realization
+     */
+    override fun dispatchSaveInstanceState(container: SparseArray<Parcelable>?) {
+        dispatchFreezeSelfOnly(container)
+    }
+
+    override fun dispatchRestoreInstanceState(container: SparseArray<Parcelable>?) {
+        dispatchThawSelfOnly(container)
+    }
+
+    override fun onSaveInstanceState(): Parcelable? {
+        return Bundle().apply {
+            putParcelable(SUPER_STATE_KEY, super.onSaveInstanceState())
+            putSparseParcelableArray(SPARSE_STATE_KEY, saveChildViewStates())
+        }
+    }
+
+    private fun ViewGroup.saveChildViewStates(): SparseArray<Parcelable> {
+        val childViewStates = SparseArray<Parcelable>()
+        children.forEach { child -> child.saveHierarchyState(childViewStates) }
+        return childViewStates
+    }
+
+    override fun onRestoreInstanceState(state: Parcelable?) {
+        var newState = state
+        if (newState is Bundle) {
+            val childrenState = newState.getSparseParcelableArray<Parcelable>(SPARSE_STATE_KEY)
+            childrenState?.let { restoreChildViewStates(it) }
+            newState = newState.getParcelable(SUPER_STATE_KEY)
+        }
+        super.onRestoreInstanceState(newState)
+    }
+
+    private fun restoreChildViewStates(childViewStates: SparseArray<Parcelable>) {
+        children.forEach { child -> child.restoreHierarchyState(childViewStates) }
+    }
+
     companion object {
         private const val DEFAULT_BOX_STROKE_RADIUS = 12f
         private const val DEFAULT_BOX_STROKE_WIDTH = 1f
@@ -504,5 +546,9 @@ class InputField @JvmOverloads constructor(
 
         private const val INPUT_TYPE_CARD_NUMBER = 1048578-1
         private const val MAX_LENGTH_CARD_NUMBER = 19
+
+
+        private const val SUPER_STATE_KEY = "SUPER_STATE_KEY"
+        private const val SPARSE_STATE_KEY = "SPARSE_STATE_KEY"
     }
 }
