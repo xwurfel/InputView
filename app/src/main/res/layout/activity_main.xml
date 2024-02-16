@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    
+    <configurable.input.fields.presentation.custom.InputField
+        android:id="@+id/inputTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:editTextHeight="48dp"
+        app:hint="Hint"
+        app:editTextSize="18sp"
+        app:text="Text here"
+        app:header="Input Text Field"
+        app:headerTextSize="16sp"
+        app:errorText="Error here"
+        app:errorIconDrawable="@drawable/ic_hide"
+        app:errorTextSize="14sp"
+        app:editTextStartIconDrawable="@drawable/ic_search"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="6dp" />
+
+    <configurable.input.fields.presentation.custom.InputField
+        android:id="@+id/emailTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:editTextHeight="48dp"
+        app:hint="Hint"
+        app:editTextSize="18sp"
+        app:text="Text here"
+        app:header="Email input view"
+        app:headerTextSize="16sp"
+        app:inputType="textEmailAddress"
+        app:errorText="Error here"
+        app:errorIconDrawable="@drawable/ic_hide"
+        app:errorTextSize="14sp"
+        app:editTextStartIconDrawable="@drawable/ic_search"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="6dp" />
+
+    <configurable.input.fields.presentation.custom.InputField
+        android:id="@+id/passwordTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:editTextHeight="48dp"
+        app:editTextStartIconDrawable="@drawable/ic_search"
+        app:text="Password"
+        app:headerTextSize="16sp"
+        app:header="Password"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="6dp"
+        app:inputType="textPassword"/>
+
+    <configurable.input.fields.presentation.custom.InputField
+        android:id="@+id/uriTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:editTextHeight="48dp"
+        app:editTextStartIconDrawable="@drawable/ic_search"
+        app:text="Text Uri"
+        app:header="Text URL"
+        app:headerTextSize="16sp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="6dp"
+        app:inputType="textUri"/>
+
+
+    <configurable.input.fields.presentation.custom.InputField
+        android:id="@+id/dateTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:editTextHeight="48dp"
+        app:header="Date"
+        app:text="date"
+        app:editTextStartIconDrawable="@drawable/ic_search"
+        app:headerTextSize="16sp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="6dp"
+        app:inputType="date"/>
+
+    <configurable.input.fields.presentation.custom.InputField
+        android:id="@+id/cardNumberTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:editTextHeight="48dp"
+        app:header="Card Number"
+        app:text="1234 1234 1234 1234"
+        app:editTextStartIconDrawable="@drawable/ic_search"
+        app:headerTextSize="16sp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="6dp"
+        app:inputType="cardNumber|number"/>
+
+</LinearLayout>
