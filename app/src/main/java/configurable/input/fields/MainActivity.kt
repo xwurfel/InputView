@@ -2,7 +2,7 @@ package configurable.input.fields
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import configurable.input.fields.presentation.custom.InputField
+import configurable.input.maintocopy.presentation.custom.InputField
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
         inputUriTextView.setOnOpenURIClickListener {}
 
     }
+
+
 
     private val inputTextView: InputField by lazy {
         findViewById(R.id.inputTextField)

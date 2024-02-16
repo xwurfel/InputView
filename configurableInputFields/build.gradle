@@ -1,14 +1,13 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    namespace 'configurable.input.fields'
+    namespace 'configurable.input.maintocopy'
     compileSdk 33
 
     defaultConfig {
-        applicationId "configurable.input.fields"
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -34,7 +33,6 @@ android {
 
 dependencies {
 
-    implementation project(':configurableInputFields')
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.5.0'

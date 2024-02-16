@@ -7,7 +7,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
     
-    <configurable.input.fields.presentation.custom.InputField
+    <configurable.input.maintocopy.presentation.custom.InputField
         android:id="@+id/inputTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="6dp" />
 
-    <configurable.input.fields.presentation.custom.InputField
+    <configurable.input.maintocopy.presentation.custom.InputField
         android:id="@+id/emailTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="6dp" />
 
-    <configurable.input.fields.presentation.custom.InputField
+    <configurable.input.maintocopy.presentation.custom.InputField
         android:id="@+id/passwordTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
         android:layout_marginTop="6dp"
         app:inputType="textPassword"/>
 
-    <configurable.input.fields.presentation.custom.InputField
+    <configurable.input.maintocopy.presentation.custom.InputField
         android:id="@+id/uriTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
         app:inputType="textUri"/>
 
 
-    <configurable.input.fields.presentation.custom.InputField
+    <configurable.input.maintocopy.presentation.custom.InputField
         android:id="@+id/dateTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
         android:layout_marginTop="6dp"
         app:inputType="date"/>
 
-    <configurable.input.fields.presentation.custom.InputField
+    <configurable.input.maintocopy.presentation.custom.InputField
         android:id="@+id/cardNumberTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

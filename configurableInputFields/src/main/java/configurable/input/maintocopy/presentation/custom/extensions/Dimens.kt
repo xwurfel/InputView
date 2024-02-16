@@ -1,4 +1,4 @@
-package configurable.input.fields.presentation.custom.extensions
+package configurable.input.maintocopy.presentation.custom.extensions
 
 import android.content.res.Resources
 

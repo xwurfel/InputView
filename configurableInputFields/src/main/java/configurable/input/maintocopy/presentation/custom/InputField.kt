@@ -1,4 +1,4 @@
-package configurable.input.fields.presentation.custom
+package configurable.input.maintocopy.presentation.custom
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -28,17 +28,17 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import androidx.core.widget.doOnTextChanged
-import configurable.input.fields.R
-import configurable.input.fields.presentation.custom.extensions.dp
-import configurable.input.fields.presentation.custom.extensions.getBooleanAttribute
-import configurable.input.fields.presentation.custom.extensions.getColorAttribute
-import configurable.input.fields.presentation.custom.extensions.getDimensionAttribute
-import configurable.input.fields.presentation.custom.extensions.getDrawableAttribute
-import configurable.input.fields.presentation.custom.extensions.getFloatAttribute
-import configurable.input.fields.presentation.custom.extensions.getIntegerAttribute
-import configurable.input.fields.presentation.custom.extensions.getPixelAttribute
-import configurable.input.fields.presentation.custom.extensions.getResourceIdAttribute
-import configurable.input.fields.presentation.custom.extensions.getStringAttribute
+import configurable.input.maintocopy.R
+import configurable.input.maintocopy.presentation.custom.extensions.dp
+import configurable.input.maintocopy.presentation.custom.extensions.getBooleanAttribute
+import configurable.input.maintocopy.presentation.custom.extensions.getColorAttribute
+import configurable.input.maintocopy.presentation.custom.extensions.getDimensionAttribute
+import configurable.input.maintocopy.presentation.custom.extensions.getDrawableAttribute
+import configurable.input.maintocopy.presentation.custom.extensions.getFloatAttribute
+import configurable.input.maintocopy.presentation.custom.extensions.getIntegerAttribute
+import configurable.input.maintocopy.presentation.custom.extensions.getPixelAttribute
+import configurable.input.maintocopy.presentation.custom.extensions.getResourceIdAttribute
+import configurable.input.maintocopy.presentation.custom.extensions.getStringAttribute
 import kotlin.math.roundToInt
 
 
@@ -364,11 +364,11 @@ class InputField @JvmOverloads constructor(
                 }
                 InputType.TYPE_TEXT_VARIATION_PASSWORD -> {
                     setupPasswordTypeListeners(attributesArray)
-                    endPadding += endDrawableButton.width + DEFAULT_EDIT_TEXT_PADDING_END_WITH_END_DRAWABLE.dp
+                    endPadding += endDrawableButton.width + configurable.input.maintocopy.presentation.custom.InputField.Companion.DEFAULT_EDIT_TEXT_PADDING_END_WITH_END_DRAWABLE.dp
                 }
                 InputType.TYPE_TEXT_VARIATION_URI -> {
                     setupUriTypeData(attributesArray)
-                    endPadding += endDrawableButton.width + DEFAULT_EDIT_TEXT_PADDING_END_WITH_END_DRAWABLE.dp
+                    endPadding += endDrawableButton.width + configurable.input.maintocopy.presentation.custom.InputField.Companion.DEFAULT_EDIT_TEXT_PADDING_END_WITH_END_DRAWABLE.dp
                 }
                 INPUT_TYPE_CARD_NUMBER -> {
                     errorHandler = cardNumberErrorHandler

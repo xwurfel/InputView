@@ -4,4 +4,8 @@
     <string name="error2">Error Second</string>
     <string name="error3">Error Third</string>
 
+
+    <string name="error_enter_valid_email">Enter valid email.</string>
+    <string name="error_invalid_card_number">Card number is not valid.</string>
+
 </resources>
