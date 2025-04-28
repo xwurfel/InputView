@@ -1,87 +1,106 @@
 package configurable.input.maintocopy.presentation.custom.extensions
 
+
 import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
-import androidx.core.content.res.getBooleanOrThrow
-import androidx.core.content.res.getColorOrThrow
-import androidx.core.content.res.getDimensionOrThrow
-import androidx.core.content.res.getDimensionPixelSizeOrThrow
-import androidx.core.content.res.getDrawableOrThrow
-import androidx.core.content.res.getFloatOrThrow
-import androidx.core.content.res.getIntegerOrThrow
-import androidx.core.content.res.getResourceIdOrThrow
-import androidx.core.content.res.getStringOrThrow
-import java.lang.Exception
+import androidx.core.content.res.*
 
-
-fun getDimensionAttribute(attributesArray: TypedArray, index: Int): Float? {
+internal fun TypedArray.getDimensionOrNull(index: Int): Float? {
     return try {
-        attributesArray.getDimensionOrThrow(index)
-    } catch (E: Exception) {
+        getDimensionOrThrow(index)
+    } catch (_: Exception) {
         null
     }
 }
 
-fun getPixelAttribute(attributesArray: TypedArray, index: Int): Int? {
+internal fun TypedArray.getPixelSizeOrNull(index: Int): Int? {
     return try {
-        attributesArray.getDimensionPixelSizeOrThrow(index)
-    } catch (E: Exception) {
+        getDimensionPixelSizeOrThrow(index)
+    } catch (_: Exception) {
         null
     }
 }
 
-fun getResourceIdAttribute(attributesArray: TypedArray, index: Int): Int? {
+
+internal fun TypedArray.getResourceIdOrNull(index: Int): Int? {
     return try {
-        attributesArray.getResourceIdOrThrow(index)
-    } catch (E: Exception) {
+        getResourceIdOrThrow(index)
+    } catch (_: Exception) {
         null
     }
 }
 
-fun getColorAttribute(attributesArray: TypedArray, index: Int): Int? {
+internal fun TypedArray.getColorOrNull(index: Int): Int? {
     return try {
-        attributesArray.getColorOrThrow(index)
-    } catch (E: Exception) {
+        getColorOrThrow(index)
+    } catch (_: Exception) {
         null
     }
 }
 
-fun getIntegerAttribute(attributesArray: TypedArray, index: Int): Int? {
+internal fun TypedArray.getIntegerOrNull(index: Int): Int? {
     return try {
-        attributesArray.getIntegerOrThrow(index)
-    } catch (E: Exception) {
+        getIntegerOrThrow(index)
+    } catch (_: Exception) {
         null
     }
 }
 
-fun getDrawableAttribute(attributesArray: TypedArray, index: Int): Drawable? {
+internal fun TypedArray.getDrawableOrNull(index: Int): Drawable? {
     return try {
-        attributesArray.getDrawableOrThrow(index)
-    } catch (E: Exception) {
+        getDrawableOrThrow(index)
+    } catch (_: Exception) {
         null
     }
 }
 
-fun getBooleanAttribute(attributesArray: TypedArray, index: Int): Boolean? {
+internal fun TypedArray.getBooleanOrNull(index: Int): Boolean? {
     return try {
-        attributesArray.getBooleanOrThrow(index)
-    } catch (e: Exception) {
+        getBooleanOrThrow(index)
+    } catch (_: Exception) {
         null
     }
 }
 
-fun getStringAttribute(attributesArray: TypedArray, index: Int): String? {
+internal fun TypedArray.getStringOrNull(index: Int): String? {
     return try {
-        attributesArray.getStringOrThrow(index)
-    } catch (E: Exception) {
+        getStringOrThrow(index)
+    } catch (_: Exception) {
         null
     }
 }
 
-fun getFloatAttribute(attributesArray: TypedArray, index: Int): Float? {
+internal fun TypedArray.getFloatOrNull(index: Int): Float? {
     return try {
-        attributesArray.getFloatOrThrow(index)
-    } catch (E: Exception) {
+        getFloatOrThrow(index)
+    } catch (_: Exception) {
         null
     }
 }
+
+fun getDimensionAttribute(attributesArray: TypedArray, index: Int): Float? =
+    attributesArray.getDimensionOrNull(index)
+
+fun getPixelAttribute(attributesArray: TypedArray, index: Int): Int? =
+    attributesArray.getPixelSizeOrNull(index)
+
+fun getResourceIdAttribute(attributesArray: TypedArray, index: Int): Int? =
+    attributesArray.getResourceIdOrNull(index)
+
+fun getColorAttribute(attributesArray: TypedArray, index: Int): Int? =
+    attributesArray.getColorOrNull(index)
+
+fun getIntegerAttribute(attributesArray: TypedArray, index: Int): Int? =
+    attributesArray.getIntegerOrNull(index)
+
+fun getDrawableAttribute(attributesArray: TypedArray, index: Int): Drawable? =
+    attributesArray.getDrawableOrNull(index)
+
+fun getBooleanAttribute(attributesArray: TypedArray, index: Int): Boolean? =
+    attributesArray.getBooleanOrNull(index)
+
+fun getStringAttribute(attributesArray: TypedArray, index: Int): String? =
+    attributesArray.getStringOrNull(index)
+
+fun getFloatAttribute(attributesArray: TypedArray, index: Int): Float? =
+    attributesArray.getFloatOrNull(index)

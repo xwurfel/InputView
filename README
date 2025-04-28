@@ -1,118 +1,248 @@
-Import:
-Copy 'ConfigurableInputFields' module into your project.
+# Configurable Input Fields for Android
 
-Example:
-Inside 'App' module, inside 'MainActivity' you can find examples of realization InputField
+A flexible, feature-rich library for creating customizable input fields in Android applications.
 
-Usage:
-Create InputField view in your xml file and use attributed below
+## Features
 
-InputField Attributes:
+- **Multiple Input Types**: Support for various input types including text, email, password, URI, and card number
+- **Customizable Styling**: Extensive styling options for all components
+- **Validation**: Built-in and custom validation support
+- **Error Handling**: Visual error feedback with customizable styling
+- **Outlined Box Support**: Optional outlined box with customizable stroke, color, and corner radius
+- **Password Visibility Toggle**: Built-in show/hide functionality for password fields
+- **URI Field Support**: Special handling for URI input with "Open" button
+- **Card Number Formatting**: Automatic formatting for credit card numbers
 
-        <!-- EditText -->
-        <attr name="text" format="string"/> Sets EditText's text
-        <attr name="maxLines" format="integer"/>
-        <attr name="maxLength" format="integer"/>
-        <attr name="hint" format="string"/>
+## Installation
 
-        <attr name="enableEndDrawableButton" format="boolean" /> If set 'Yes' - ImageButton will be Visibile (At the end of the EditText), no = Gone
-        <attr name="endDrawableButtonIcon" format="reference" /> Sets ImageButton's drawable
+1. Copy the `ConfigurableInputFields` module into your project
+2. Add the module dependency in your app's `build.gradle` file:
 
-        <attr name="editTextHeight" format="dimension"/>
-        <attr name="editTextFontFamily" format="reference"/>
-        <attr name="editTextColor" format="color"/>
-        <attr name="editTextSize" format="dimension"/>
-        <attr name="editTextStartIconDrawable" format="reference"/>
-        <attr name="editTextEndIconDrawable" format="reference"/>
-        <attr name="editTextBackground" format="reference"/>
-        <attr name="editTextPaddingStart" format="dimension"/>
-        <attr name="editTextPaddingEnd" format="dimension"/>
-        <attr name="editTextDrawablePadding" format="dimension"/>
-        <attr name="editTextHintTextColor" format="color"/>
+```gradle
+dependencies {
+    implementation project(':configurableInputFields')
+}
+```
 
-		Possible Input types for EditText:
-		
-        <attr name="inputType">
-            <flag name="none" value="0x00000000" />
-            <flag name="text" value="0x00000001" />
-            <flag name="textCapCharacters" value="0x00001001" />
-            <flag name="textCapWords" value="0x00002001" />
-            <flag name="textCapSentences" value="0x00004001" />
-            <flag name="textAutoCorrect" value="0x00008001" />
-            <flag name="textAutoComplete" value="0x00010001" />
-            <flag name="textMultiLine" value="0x00020001" />
-            <flag name="textImeMultiLine" value="0x00040001" />
-            <flag name="textNoSuggestions" value="0x00080001" />
-            <flag name="textEnableTextConversionSuggestions" value="0x00100001" />
-            <flag name="textUri" value="0x00000011" />
-            <flag name="textEmailAddress" value="0x00000021" />
-            <flag name="textEmailSubject" value="0x00000031" />
-            <flag name="textShortMessage" value="0x00000041" />
-            <flag name="textLongMessage" value="0x00000051" />
-            <flag name="textPersonName" value="0x00000061" />
-            <flag name="textPostalAddress" value="0x00000071" />
-            <flag name="textPassword" value="0x00000081" />
-            <flag name="textVisiblePassword" value="0x00000091" />
-            <flag name="textWebEditText" value="0x000000a1" />
-            <flag name="textFilter" value="0x000000b1" />
-            <flag name="textPhonetic" value="0x000000c1" />
-            <flag name="textWebEmailAddress" value="0x000000d1" />
-            <flag name="textWebPassword" value="0x000000e1" />
-            <flag name="number" value="0x00000002" />
-            <flag name="numberSigned" value="0x00001002" />
-            <flag name="numberDecimal" value="0x00002002" />
-            <flag name="numberPassword" value="0x00000012" />
-            <flag name="phone" value="0x00000003" />
-            <flag name="datetime" value="0x00000004" />
-            <flag name="date" value="0x00000014" />
-            <flag name="time" value="0x00000024" />
+## Basic Usage
 
-            <flag name="cardNumber" value="0x00100000" /> Custom InputType which allows as to input as cardNumber format (4 4 4 4)
-			
-			
-			Is used when InputType = textPassword. Allows to change ImageButton drawable states
-			
-        <!-- TextPassword -->
-        <attr name="onPasswordInvisibleDrawable" format="reference" />
-        <attr name="onPasswordVisibleDrawable" format="reference" />
+Add the InputField to your layout XML:
 
-        <!-- TextURI -->
-        <attr name="openUriText" format="string" />
-        <attr name="openUriTextColor" format="color" />
-        <attr name="openUriTextSize" format="dimension" />
-        <attr name="openUriTextFontFamily" format="reference" />
-        <attr name="openUriEndDrawable" format="reference" />
+```xml
+<configurable.input.maintocopy.presentation.custom.InputField
+    android:id="@+id/emailField"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:editTextHeight="48dp"
+    app:hint="Enter your email"
+    app:header="Email"
+    app:inputType="textEmailAddress" />
+```
 
-        <!-- OutlinedBox -->
-        <attr name="isOutlinedBox" format="boolean" />
-        <attr name="boxStrokeWidth" format="dimension" />
-        <attr name="boxStrokeCornerRadius" format="float" />
-        <attr name="boxStrokeCornerRadiusTopStart" format="float" />
-        <attr name="boxStrokeCornerRadiusBottomStart" format="float" />
-        <attr name="boxStrokeCornerRadiusTopEnd" format="float" />
-        <attr name="boxStrokeCornerRadiusBottomEnd" format="float" />
-        <attr name="boxStrokeColor" format="color" />
-        <attr name="boxStrokeFocusedColor" format="color" />
-        <attr name="errorBoxStrokeColor" format="color" />
+In your Activity or Fragment:
 
-        <!-- HintLabel -->
-        <attr name="header" format="string" />
-        <attr name="headerHideWhenEmptyText" format="boolean" />
-        <attr name="headerTextSize" format="dimension" />
-        <attr name="headerTextColor" format="color" />
-        <attr name="headerTextFontFamily" format="reference"/>
-        <attr name="headerTextMarginStart" format="dimension"/>
-        <attr name="headerTextMarginBottom" format="dimension"/>
+```kotlin
+// Get reference to the input field
+val emailField: InputField = findViewById(R.id.emailField)
 
+// Get text from the field
+val email = emailField.getText()
 
-        <!-- ErrorLabel -->
-        <attr name="isErrorEnabled" format="boolean" />
-        <attr name="errorText" format="string" />
-        <attr name="errorTextSize" format="dimension" />
-        <attr name="errorTextColor" format="color" />
-        <attr name="errorTextFontFamily" format="reference"/>
-        <attr name="errorTextMarginStart" format="dimension"/>
-        <attr name="errorTextMarginTop" format="dimension"/>
-        <attr name="errorDrawablePadding" format="dimension"/>
-        <attr name="errorIconDrawable" format="reference"/>
-        </attr>
+// Set text to the field
+emailField.setText("example@email.com")
+
+// Check if input is valid
+if (emailField.isCurrentInputCorrect()) {
+    // Proceed with valid input
+}
+
+// Set custom error handler
+emailField.setErrorHandler(object : InputField.InputErrorHandler {
+    override fun getErrorResourceForText(inputText: String): Int? {
+        return if (validateEmail(inputText)) null else R.string.invalid_email
+    }
+})
+```
+
+## Using Built-in Validation
+
+The library includes common validators in the `InputValidator` utility class:
+
+```kotlin
+// Email validation
+emailField.setErrorHandler(InputValidator.emailValidator())
+
+// Minimum length validation
+passwordField.setErrorHandler(InputValidator.minLengthValidator(8, R.string.password_too_short))
+
+// Required field validation
+nameField.setErrorHandler(InputValidator.notEmptyValidator(R.string.name_required))
+
+// Combine multiple validators
+passwordField.setErrorHandler(InputValidator.compositeValidator(
+    InputValidator.notEmptyValidator(R.string.password_required),
+    InputValidator.minLengthValidator(8, R.string.password_too_short),
+    InputValidator.patternValidator(Regex(".*[A-Z].*"), R.string.password_needs_uppercase)
+))
+```
+
+## Input Types
+
+The library supports these input types:
+
+- `text` - Standard text input
+- `textEmailAddress` - Email input with validation
+- `textPassword` - Password input with visibility toggle
+- `textUri` - URI input with "Open" button
+- `cardNumber` - Credit card number with formatting (4-digit groups)
+
+## Customization Reference
+
+### EditText Attributes
+
+| Attribute | Description |
+|-----------|-------------|
+| `text` | Initial text |
+| `maxLines` | Maximum number of lines |
+| `maxLength` | Maximum text length |
+| `hint` | Hint text shown when empty |
+| `editTextHeight` | Height of the EditText |
+| `editTextFontFamily` | Font family resource |
+| `editTextColor` | Text color |
+| `editTextSize` | Text size |
+| `editTextStartIconDrawable` | Start icon drawable |
+| `editTextEndIconDrawable` | End icon drawable |
+| `editTextBackground` | Background drawable |
+| `editTextPaddingStart` | Start padding |
+| `editTextPaddingEnd` | End padding |
+| `editTextDrawablePadding` | Padding between text and drawables |
+| `editTextHintTextColor` | Hint text color |
+| `inputType` | Input type (see Android's InputType values) |
+
+### Header Attributes
+
+| Attribute | Description |
+|-----------|-------------|
+| `header` | Header text |
+| `headerHideWhenEmptyText` | Whether to hide header when field is empty |
+| `headerTextSize` | Header text size |
+| `headerTextColor` | Header text color |
+| `headerTextFontFamily` | Header font family resource |
+| `headerTextMarginStart` | Header start margin |
+| `headerTextMarginBottom` | Header bottom margin |
+
+### Error Attributes
+
+| Attribute | Description |
+|-----------|-------------|
+| `isErrorEnabled` | Enable/disable error display |
+| `errorText` | Default error text |
+| `errorTextSize` | Error text size |
+| `errorTextColor` | Error text color |
+| `errorTextFontFamily` | Error font family resource |
+| `errorTextMarginStart` | Error start margin |
+| `errorTextMarginTop` | Error top margin |
+| `errorDrawablePadding` | Padding between error icon and text |
+| `errorIconDrawable` | Error icon drawable |
+
+### Outlined Box Attributes
+
+| Attribute | Description |
+|-----------|-------------|
+| `isOutlinedBox` | Enable/disable outlined box |
+| `boxStrokeWidth` | Outline stroke width |
+| `boxStrokeCornerRadius` | Outline corner radius (all corners) |
+| `boxStrokeCornerRadiusTopStart` | Top start corner radius |
+| `boxStrokeCornerRadiusTopEnd` | Top end corner radius |
+| `boxStrokeCornerRadiusBottomStart` | Bottom start corner radius |
+| `boxStrokeCornerRadiusBottomEnd` | Bottom end corner radius |
+| `boxStrokeColor` | Outline color in normal state |
+| `boxStrokeFocusedColor` | Outline color in focused state |
+| `errorBoxStrokeColor` | Outline color in error state |
+
+### Password Field Attributes
+
+| Attribute | Description |
+|-----------|-------------|
+| `onPasswordInvisibleDrawable` | Icon for when password is hidden |
+| `onPasswordVisibleDrawable` | Icon for when password is visible |
+
+### URI Field Attributes
+
+| Attribute | Description |
+|-----------|-------------|
+| `openUriText` | Text for the "Open" button |
+| `openUriTextColor` | Color of the "Open" button text |
+| `openUriTextSize` | Size of the "Open" button text |
+| `openUriTextFontFamily` | Font family for the "Open" button |
+| `openUriEndDrawable` | Drawable for the end of the URI field |
+
+### End Drawable Button
+
+| Attribute | Description |
+|-----------|-------------|
+| `enableEndDrawableButton` | Enable/disable the end drawable button |
+| `endDrawableButtonIcon` | Icon for the end drawable button |
+
+## Examples
+
+### Text Field with Error
+
+```xml
+<configurable.input.maintocopy.presentation.custom.InputField
+    android:id="@+id/nameField"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:header="Full Name"
+    app:hint="Enter your full name"
+    app:isErrorEnabled="true"
+    app:errorText="Name is required"
+    app:errorTextColor="#FF0000"
+    app:errorIconDrawable="@drawable/ic_error" />
+```
+
+### Password Field
+
+```xml
+<configurable.input.maintocopy.presentation.custom.InputField
+    android:id="@+id/passwordField"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:header="Password"
+    app:hint="Enter your password"
+    app:inputType="textPassword"
+    app:onPasswordVisibleDrawable="@drawable/ic_visible"
+    app:onPasswordInvisibleDrawable="@drawable/ic_invisible" />
+```
+
+### Credit Card Field
+
+```xml
+<configurable.input.maintocopy.presentation.custom.InputField
+    android:id="@+id/cardNumberField"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:header="Card Number"
+    app:hint="Enter card number"
+    app:inputType="cardNumber"
+    app:editTextStartIconDrawable="@drawable/ic_credit_card" />
+```
+
+### Outlined Field with Custom Styling
+
+```xml
+<configurable.input.maintocopy.presentation.custom.InputField
+    android:id="@+id/emailField"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:header="Email Address"
+    app:headerTextColor="#0066CC"
+    app:hint="Enter your email"
+    app:inputType="textEmailAddress"
+    app:isOutlinedBox="true"
+    app:boxStrokeWidth="2dp"
+    app:boxStrokeCornerRadius="8dp"
+    app:boxStrokeColor="#CCCCCC"
+    app:boxStrokeFocusedColor="#0066CC"
+    app:errorBoxStrokeColor="#FF0000" />
+```
